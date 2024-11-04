@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="Scanner-Prototype"
+run/main_scene="res://scenes/node_2d.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/subwindows/embed_subwindows=false
+window/stretch/mode="viewport"
 
 [rendering]
 

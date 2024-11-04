@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://geo2as0n25d1"]
+[gd_scene load_steps=5 format=3 uid="uid://geo2as0n25d1"]
+
+[ext_resource type="Script" path="res://scenes/camera_window.gd" id="1_8jo6y"]
+[ext_resource type="Texture2D" uid="uid://bnyi7sl7t22wt" path="res://icon.svg" id="1_nft6n"]
+[ext_resource type="Script" path="res://scenes/viewWindow.gd" id="2_r83tv"]
+[ext_resource type="Script" path="res://scenes/test_move.gd" id="4_gu0so"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_8jo6y")
+
+[node name="Window" type="Window" parent="."]
+process_mode = 1
+transparent_bg = true
+position = Vector2i(10, 36)
+size = Vector2i(600, 600)
+transient = true
+unresizable = true
+transparent = true
+script = ExtResource("2_r83tv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Window"]
+position = Vector2(1152, 648)
+
+[node name="dude" type="Sprite2D" parent="."]
+position = Vector2(367, 358)
+texture = ExtResource("1_nft6n")
+script = ExtResource("4_gu0so")
