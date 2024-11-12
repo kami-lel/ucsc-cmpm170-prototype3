@@ -3,6 +3,7 @@ uniform sampler2D input_texture;
 uniform float lod: hint_range(0.0, 50) = 0;
 uniform vec2 blur_radius = vec2(12.0, 12.0);
 
+
 void fragment() {
     vec2 uv = SCREEN_UV;
     vec4 color = vec4(0.0);
@@ -32,6 +33,13 @@ void fragment() {
 
 	//Tint everything green
 	color += vec4(0.0, 0.4, 0.0, -.8);
+
+
+    // Get progressively darker as the distance gets further
+    float fade = 1.0 - (distance(vec2(576.0, 324.0), FRAGCOORD.xy) / 700.0);
+    color *= fade;
+
+
 
     COLOR = color;
 }
