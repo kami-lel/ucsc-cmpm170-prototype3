@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://geo2as0n25d1"]
+[gd_scene load_steps=6 format=3 uid="uid://geo2as0n25d1"]
 
 [ext_resource type="Script" path="res://scripts/camera_window.gd" id="1_8jo6y"]
 [ext_resource type="Script" path="res://scripts/viewWindow.gd" id="2_r83tv"]
 [ext_resource type="Script" path="res://scripts/test_move.gd" id="4_gu0so"]
 [ext_resource type="Texture2D" uid="uid://sp2d51dnuv7v" path="res://assets/noise.png" id="5_fer4x"]
+[ext_resource type="AudioStream" uid="uid://bd84jgulo3hfy" path="res://assets/Spooky2.ogg" id="5_l60y1"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_8jo6y")
@@ -17,6 +18,7 @@ offset_bottom = 525.0
 [node name="Window" type="SubViewport" parent="SubViewportContainer"]
 unique_name_in_owner = true
 handle_input_locally = false
+render_target_update_mode = 4
 script = ExtResource("2_r83tv")
 
 [node name="camera_control" type="Sprite2D" parent="SubViewportContainer/Window"]
@@ -53,3 +55,7 @@ offset_bottom = 23.0
 [node name="window_texture" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(1152, 648)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_l60y1")
+autoplay = true
