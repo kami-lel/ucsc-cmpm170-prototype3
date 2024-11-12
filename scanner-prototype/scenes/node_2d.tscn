@@ -1,29 +1,28 @@
 [gd_scene load_steps=5 format=3 uid="uid://geo2as0n25d1"]
 
 [ext_resource type="Script" path="res://scripts/camera_window.gd" id="1_8jo6y"]
-[ext_resource type="Texture2D" uid="uid://bnyi7sl7t22wt" path="res://icon.svg" id="1_nft6n"]
 [ext_resource type="Script" path="res://scripts/viewWindow.gd" id="2_r83tv"]
 [ext_resource type="Script" path="res://scripts/test_move.gd" id="4_gu0so"]
+[ext_resource type="Texture2D" uid="uid://sp2d51dnuv7v" path="res://assets/noise.png" id="5_fer4x"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_8jo6y")
 
-[node name="Environment" type="Node" parent="."]
-
-[node name="dude" type="Sprite2D" parent="Environment"]
-position = Vector2(367, 358)
-texture = ExtResource("1_nft6n")
+[node name="camera_control" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("4_gu0so")
 
-[node name="Sprite2D" type="Sprite2D" parent="Environment"]
-modulate = Color(1, 0.556863, 1, 1)
-position = Vector2(1066, 84)
-texture = ExtResource("1_nft6n")
+[node name="Camera2D" type="Camera2D" parent="camera_control"]
+anchor_mode = 0
+editor_draw_limits = true
 
-[node name="hellow" type="Sprite2D" parent="Environment"]
-position = Vector2(714, 560)
-scale = Vector2(0.365238, 0.206909)
-texture = ExtResource("1_nft6n")
+[node name="background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1162, 1178)
+scale = Vector2(3, 3)
+texture = ExtResource("5_fer4x")
+
+[node name="Environment" type="Node" parent="."]
 
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("sprite", "main_control")]
 process_mode = 1
@@ -43,6 +42,12 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Window/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="window_texture" type="Sprite2D" parent="Window"]
 position = Vector2(1152, 648)
