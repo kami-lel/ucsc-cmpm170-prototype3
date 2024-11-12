@@ -4,6 +4,7 @@ extends Node
 @onready var _SubWindow: Window = $Window
 @onready var environ : Node = get_node("Environment");
 var selector_button : PackedScene = load("res://scenes/selector_button.tscn");
+var scan_shader := load("res://shaders/scan_shader.gdshader");
 
 var test;
 
@@ -16,6 +17,13 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		test = get_viewport().get_texture().get_image();
 		_SubWindow.sprite.texture = ImageTexture.create_from_image(test);
+		
+		# Draw shader on the new window
+		var scan_material = ShaderMaterial.new();
+		scan_material.shader = scan_shader;
+		scan_material.set_shader_parameter("input_texture", _SubWindow.sprite.texture);
+		_SubWindow.sprite.material = scan_material;
+		
 		draw_boxes();
 
 func draw_boxes() -> void:
