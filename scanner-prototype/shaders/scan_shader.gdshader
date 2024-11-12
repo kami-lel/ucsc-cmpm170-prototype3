@@ -15,22 +15,20 @@ void fragment() {
 
     // Create static I guess
     float random_offset = random(FRAGCOORD.xy + TIME * 5.0) * 10.0;
-    float moving_y = mod(FRAGCOORD.y + random_offset, 10.0);
-    if (moving_y < 3.0) {
+    float static_y = mod(FRAGCOORD.y + random_offset, 10.0);
+    if (static_y < 3.0) {
         color = vec4(0.0, 0.8, 0.0, 1.0);
-    } else if (moving_y == 1.0 || moving_y == 9.0) {
-        color *= 0.5; // Tint lines on either side darker
+    } else if (static_y == 1.0 || static_y == 9.0) {
+        color *= 0.5;
     }
 
     //add scan lines
-    float moving_y2 = mod(FRAGCOORD.y, 10.0);
-    if (int(moving_y2) < 3) {
-    	color = vec4(0.0, 0.8, 0.0, 1.0);
-    } else if (int(moving_y2) == 1 || int(moving_y2) == 9) {
-    	color *= 0.5; // Tint the lines on either side darker
-    }
-
-
+    float moving_y2 = mod(FRAGCOORD.y + sin(TIME * 3.0) * 2.0, 10.0);
+        if (moving_y2 < 1.0) {
+            color = vec4(0.0, 0.8, 0.0, 1.0);
+        } else if (moving_y2 == 1.0 || moving_y2 == 9.0) {
+            color *= 0.5;
+        }
 
     // Sample neighboring pixels
     color += texture(input_texture, uv + vec2(-offset.x, -offset.y), lod);
