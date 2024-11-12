@@ -73,6 +73,8 @@ func generate_random() -> void:
 	num_objs = random.randi_range(4, 6);
 	for i in num_objs:
 		var sprite : Sprite2D = findable_packed.instantiate();
+		#sprite.texture = _SubWindow.get_viewport().get_texture(); #hard mode
+		#sprite.scale = Vector2(0.111111, 0.19753);
 		sprite.rotate(random.randi_range(0, 6));
 		environ.add_child(sprite);
 		sprite.start_pos = Vector2(random.randf_range(100, 2000), random.randf_range(100, 2000));
