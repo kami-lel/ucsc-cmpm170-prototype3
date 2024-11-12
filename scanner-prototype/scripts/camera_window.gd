@@ -1,15 +1,16 @@
 extends Node
 
 @onready var _MainWindow: Window = get_window()
-@onready var _SubWindow: Window = $Window
+@onready var _SubWindow: SubViewport = get_node("%Window")
 @onready var label : Label = get_node("%Label");
-@onready var environ : Node = get_node("Environment");
+@onready var environ : Node = get_node("%Environment");
 @onready var cam_control : Sprite2D = get_node("%camera_control");
 var selector_button : PackedScene = load("res://scenes/selector_button.tscn");
 var findable_packed : PackedScene = load("res://scenes/findable.tscn");
 var scan_shader := load("res://shaders/scan_shader.gdshader");
 var random : RandomNumberGenerator;
 var num_objs : int;
+var first_run : int = 0;
 
 var test;
 
@@ -23,8 +24,8 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	label.text = "Artifacts Remaining: " + str(num_objs);
-	if Input.is_action_just_pressed("ui_accept"):
-		test = get_viewport().get_texture().get_image();
+	if first_run < 2 or Input.is_action_just_pressed("ui_accept"):
+		test = _SubWindow.get_viewport().get_texture().get_image();
 		_SubWindow.sprite.texture = ImageTexture.create_from_image(test);
 		
 		# Draw shader on the new window
@@ -34,6 +35,7 @@ func _process(_delta: float) -> void:
 		_SubWindow.sprite.material = scan_material;
 		
 		draw_boxes();
+		first_run += 1;
 
 func draw_boxes() -> void:
 	_SubWindow.clear_control();
@@ -73,5 +75,5 @@ func generate_random() -> void:
 		var sprite : Sprite2D = findable_packed.instantiate();
 		sprite.rotate(random.randi_range(0, 6));
 		environ.add_child(sprite);
-		sprite.position = Vector2(random.randf_range(100, 2000), random.randf_range(100, 2000));
+		sprite.start_pos = Vector2(random.randf_range(100, 2000), random.randf_range(100, 2000));
 		

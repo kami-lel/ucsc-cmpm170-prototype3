@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdal6s4m5opwi"]
+[gd_scene load_steps=4 format=3 uid="uid://bdal6s4m5opwi"]
+
+[ext_resource type="Script" path="res://scenes/findable.gd" id="1_vvrmm"]
 
 [sub_resource type="Gradient" id="Gradient_58x7n"]
 interpolation_mode = 2
@@ -16,3 +18,4 @@ repeat = 1
 modulate = Color(1, 1, 1, 0.815686)
 position = Vector2(117, 147)
 texture = SubResource("GradientTexture2D_lwvyf")
+script = ExtResource("1_vvrmm")
