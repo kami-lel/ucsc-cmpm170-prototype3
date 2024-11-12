@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds8uoartphnd8"]
+
+[ext_resource type="Theme" uid="uid://cv1r71sl0okrp" path="res://assets/empty_button.tres" id="1_dqeqf"]
+
+[node name="Button" type="Button"]
+z_index = 1
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+pivot_offset = Vector2(50, 50)
+theme = ExtResource("1_dqeqf")
+metadata/_edit_use_anchors_ = true
