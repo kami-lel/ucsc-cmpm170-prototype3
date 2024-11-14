@@ -13,13 +13,28 @@ var starting_scale : Vector2
 var elapsed_time : float = 0.0
 
 
+func re_spwan():
+	# Reset elapsed time for the next cycle
+	elapsed_time = 0.0
+
+	# obtain the size of the viewport rectangle
+	var viewport_size = get_viewport().get_visible_rect().size
+
+	# extract width and height from the viewport size
+	var viewport_width = viewport_size.x
+	var viewport_height = viewport_size.y
+
+	position = Vector2(randf_range(0, viewport_width), randf_range(0, viewport_height))
+
+
+
 func _ready():
 	# Initialize the starting scale as the current scale
 	starting_scale = scale
 	# Reset elapsed time
 	elapsed_time = 0.0
 
-	position = Vector2(randf_range(-200, 500), randf_range(-200, 200))
+	re_spwan()
 
 
 
@@ -35,8 +50,6 @@ func _process(delta: float):
 		scale = starting_scale.lerp(TARGET_SCALE, t)
 
 	else:
-		# Reset elapsed time for the next cycle
-		elapsed_time = 0.0
-		position = Vector2(randf_range(-200, 500), randf_range(-200, 200))
+		re_spwan()
 
 	Game.wifi_strength = (SHRINK_DURATION - elapsed_time) / SHRINK_DURATION
