@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr68ubhw6u0fv"]
+
+[ext_resource type="Texture2D" uid="uid://dg2o2l6if0gnw" path="res://assets/laptop_realistic_2.jpg" id="1_u4e4n"]
+[ext_resource type="Script" path="res://scripts/laptop.gd" id="1_wpqc7"]
+
+[node name="laptop" type="Node2D"]
+script = ExtResource("1_wpqc7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 353.0
+offset_top = -59.0
+offset_right = 1152.0
+offset_bottom = 740.0
+texture = ExtResource("1_u4e4n")
+expand_mode = 1

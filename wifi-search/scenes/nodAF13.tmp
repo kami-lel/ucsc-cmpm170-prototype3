@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://df05emgwh11dl"]
+
+[ext_resource type="Texture2D" uid="uid://cjit85wdcllds" path="res://assets/green-grass-1024x1024.png" id="1_8ieoa"]
+[ext_resource type="PackedScene" uid="uid://cnsv0qd3c44sr" path="res://scenes/player.tscn" id="2_8tnn7"]
+[ext_resource type="PackedScene" uid="uid://ctkdjwapi0ex2" path="res://scenes/wifi.tscn" id="3_tvfkj"]
+
+[node name="game" type="Node2D"]
+position = Vector2(337.5, 400)
+
+[node name="ground" type="TextureRect" parent="."]
+offset_left = -336.5
+offset_top = -403.0
+offset_right = 832.5
+offset_bottom = 621.0
+texture = ExtResource("1_8ieoa")
+stretch_mode = 1
+
+[node name="player" parent="." instance=ExtResource("2_8tnn7")]
+
+[node name="wifi" parent="." instance=ExtResource("3_tvfkj")]
