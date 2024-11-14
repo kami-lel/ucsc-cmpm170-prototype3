@@ -38,3 +38,5 @@ func _process(delta: float):
 		# Reset elapsed time for the next cycle
 		elapsed_time = 0.0
 		position = Vector2(randf_range(-200, 500), randf_range(-200, 200))
+
+	Game.wifi_strength = (SHRINK_DURATION - elapsed_time) / SHRINK_DURATION
